@@ -64,4 +64,14 @@ public class ReqresStepDef {
     public void sendRequestPutUpdateUser() {
         SerenityRest.when().put(ReqresAPI.PUT_UPDATE_USER);
     }
+
+    @Given("Delete user with valid id {int}")
+    public void deleteUserWithValidId(int id) {
+        reqresAPI.deleteUser(id);
+    }
+
+    @When("Send request delete user")
+    public void sendRequestDeleteUser() {
+        SerenityRest.when().delete(ReqresAPI.DELETE_USER);
+    }
 }

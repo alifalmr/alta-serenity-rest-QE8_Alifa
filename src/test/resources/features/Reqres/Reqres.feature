@@ -22,3 +22,13 @@ Feature: Testing Reqres API ALTA QE8
     When Send request put update user
     Then Should return status code 200
     And Response body name should be "alifa" and job "SDET"
+
+  @Latihan
+  Scenario Outline: Delete users with valid id
+    Given Delete user with valid id <id>
+    When Send request delete user
+    Then Should return status code 204
+  Examples:
+    | id |
+    | 1  |
+    | 2  |
