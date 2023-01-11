@@ -15,6 +15,8 @@ public class ReqresAPI {
     public static final String DIR = System.getProperty("user.dir");
     public static String JSON_REQUEST = DIR+"/src/test/resources/JSON/Request";
 
+    public static String PUT_UPDATE_USER = BASE_URL + "/api/users/{id}";
+
     @Step("Get list users")
     public void setGetListUser(int page){
         SerenityRest.given().pathParam("page",page);
@@ -23,6 +25,13 @@ public class ReqresAPI {
     @Step("Post create user")
     public void postCreateUser(File json){
         SerenityRest.given()
+                    .contentType(ContentType.JSON)
+                    .body(json);
+    }
+
+    public void putUpdateUser(int id, File json){
+        SerenityRest.given()
+                    .pathParam("id",id)
                     .contentType(ContentType.JSON)
                     .body(json);
     }

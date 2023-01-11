@@ -53,4 +53,15 @@ public class ReqresStepDef {
                     .body("name",equalTo(name))
                     .body("job",equalTo(job));
     }
+
+    @Given("Put update user with valid json with id {int}")
+    public void putUpdateUserWithValidJsonWithId(int id) {
+        File json = new File(ReqresAPI.JSON_REQUEST+"/RequestUser.json");
+        reqresAPI.putUpdateUser(id,json);
+    }
+
+    @When("Send request put update user")
+    public void sendRequestPutUpdateUser() {
+        SerenityRest.when().put(ReqresAPI.PUT_UPDATE_USER);
+    }
 }
